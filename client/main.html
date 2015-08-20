@@ -3,7 +3,105 @@
 </head>
 
 <body>
-  <h1>Welcome to accountsExampleRoles!</h1>
 
-  {{> loginButtons}}
+  {{> mainNav}}
+
+  {{> welcomePanel}}
+
 </body>
+
+<template name="mainNav">
+
+  <div class="ui attached stackable menu">
+    <div class="ui container">
+      <a class="item">
+        <i class="home icon"></i> Home
+      </a>
+      {{#if isInRole 'admin'}}
+      <div class="ui simple dropdown item">
+        Admin
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          <a class="item"><i class="edit icon"></i> Edit Profile</a>
+          <a class="item"><i class="globe icon"></i> Choose Language</a>
+          <a class="item"><i class="settings icon"></i> Account Settings</a>
+        </div>
+      </div>
+      {{/if}}
+      <div class="right">
+        {{> loginButtons}}
+      </div>
+    </div>
+  </div>
+
+</template>
+
+<template name="welcomePanel">
+  <div class="ui raised very padded text container segment">
+    <h2 class="ui header">Welcome to accountsExampleRoles</h2>
+    <p>
+      In this sample application, we will demonstrate various user accounts,
+      shown below, that will expose different UI elements based on their
+      "assigned role".
+    </p>
+    <div class="ui horizontal divider"></div>
+    <p>
+      <table class="ui very basic collapsing celled table">
+        <thead>
+          <tr>
+            <th>User Details</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Assigned Role</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+                <h4 class="ui image header">
+                  <img src="http://semantic-ui.com/images/avatar2/small/lena.png" class="ui mini rounded image">
+                  <div class="content">
+                    Lena
+                    <div class="sub header">
+                      Administrator
+                    </div>
+                  </div>
+                </h4>
+            </td>
+            <td>
+              "lena@example.com"
+            </td>
+            <td>
+              "admin#1"
+            </td>
+            <td>
+              "admin"
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h4 class="ui image header">
+                <img src="http://semantic-ui.com/images/avatar2/small/matthew.png" class="ui mini rounded image">
+                <div class="content">
+                  Mike
+                  <div class="sub header">
+                    User
+                  </div>
+                </div>
+              </h4>
+            </td>
+            <td>
+              "mike@example.com"
+            </td>
+            <td>
+              "editor#1"
+            </td>
+            <td>
+              "editor"
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </p>
+  </div>
+</template>
